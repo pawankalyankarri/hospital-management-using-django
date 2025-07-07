@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body%}
+<section class="container row col-12 " style="margin: 3%;" >
+    {%for doc in docs%}
+        <div class="card col-4 " >
+            {%if doc.doc_img%}
+                <img src="{{doc.doc_img.url}}" class="card-img-top rounded h-75"  alt="">
+            {%elif doc.doc_gender == male%}
+                <img src="{%static 'images/docMale.avif'%}" class="card-img-top rounded h-75"  alt="">
+            {%else%}
+                <img src="{%static 'images/docFemale.jpg'%}" class="card-img-top rounded h-75"  alt="">
+            {%endif%}
+            <div class="card-body overflow-visible">
+                <h4>Dr.{{doc.doc_name}}</h4>
+
+                <h4>{{doc.doc_spe}}</h4>
+                <a href="{%url 'appointmenturl'%}" class="btn btn-dark">Book Appointment</a>
+            </div>
+        </div>
+    {%endfor%}
+</section>
+{%endblock%}

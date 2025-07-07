@@ -9,6 +9,7 @@ class Doctors(models.Model):
     doc_gender = models.CharField(max_length=10)
     doc_mobile = models.CharField(max_length=17)
     doc_age = models.IntegerField()
+    doc_img = models.ImageField(upload_to='images/',null=True)
     
     def __str__(self):
         return self.doc_spe

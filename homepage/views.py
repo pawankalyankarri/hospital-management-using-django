@@ -56,6 +56,7 @@ class AddDoctor(View):
         Doctors.objects.create(doc_name = dname,doc_spe = dspec,doc_mobile = dmobile,doc_gender = dgender,doc_age = dage)
         return redirect('adddoctorurl')
     
-# class Provides(View):
-#     def get(self,req):
-#         return render(req,'home/provides.html')
+class Appointments(View):
+    def get(self,req):
+        docs = Doctors.objects.all()
+        return render(req,'home/appointments.html',{'docs':docs})
