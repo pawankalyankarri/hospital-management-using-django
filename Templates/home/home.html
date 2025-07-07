@@ -1,0 +1,67 @@
+{%extends 'base.html'%} {%block styles%} {%load static%}
+<link rel="stylesheet" href="{%static 'css/home/home.css'%}" />
+{%endblock%} {%block body%}
+<header class="container-fluid">
+  <ul class="nav d-flex justify-content-around head_ul">
+    <li class="nav-item">
+      <!-- <img src="{%static 'images/hospitalImg.jpg'%}" alt=""> -->
+    </li>
+    <li class="nav-item">
+      <i class="fa-brands fa-facebook-f"></i>
+      instagram links</li>
+    <li class="nav-item">book appointments</li>
+    <li class="nav-item"><a href="{%url 'loginurl'%}">Employee Login</a></li>
+  </ul>
+</header>
+<nav class="container-fluid loginlinks">
+  <ul class="nav d-flex justify-content-around nav_ul">
+    <li class="nav-item"><a href="">HOME</a></li>
+    <li class="nav-item"><a href="{%url 'patientopurl'%}">Patient op</a></li>
+    <li class="nav-item"><a href="">Appointments</a></li>
+    <li class="nav-item"><a href="">bill</a></li>
+    <li class="nav-item"><a href="{%url 'adddoctorurl'%}">doctors</a></li>
+    <li class="nav-item"><a href="">our team</a></li>
+  </ul>
+</nav>
+<section class="promotions container-fluid"></section>
+<section class="have">
+  <ul class="nav d-flex justify-content-around reviews">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+</section>
+<section class="spe_list container mt-5 container-fluid">
+  <h3>Centers of Excellence</h3>
+  <ul class="nav provides">
+    {%for img in images%}
+    <li>
+      <div class="provide card">
+        <img
+          src="{%static 'images/'%}{{img.img}}"
+          class="card-img-top"
+          alt=""
+        />
+      </div>
+    </li>
+    {%endfor%}
+  </ul>
+</section>
+<section class="doc_img_sec container-fluid">
+  <ul class="nav d-flex justify-content-around">
+    {%for doc in doc_names%}
+    <li>
+      <div class="card">
+        <img
+          src="{%static 'images/'%}{{doc.img}}"
+          alt=""
+          class="card-img-top"
+        />
+      </div>
+    </li>
+    {%endfor%}
+    
+  </ul>
+</section>
+{%endblock%}

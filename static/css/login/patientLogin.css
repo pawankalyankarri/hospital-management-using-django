@@ -1,0 +1,16 @@
+/* patient css */
+
+/* .patient_form form .form_container {
+   display: grid;
+   height: 100vh;
+   place-items: center;
+   
+} */
+.patient_form form {
+   
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   
+}
