@@ -1,21 +1,37 @@
 {%extends 'base.html'%}
 {%load static%}
+{%block styles%}
+    <link rel="stylesheet" href="{% static 'css/home/appointments.css'%}">
+
+{%endblock%}
 {%block body%}
 <section class="container row col-12 " style="margin: 3%;" >
     {%for doc in docs%}
-        <div class="card col-4 " >
+        <div class="card col-4  " >
             {%if doc.doc_img%}
-                <img src="{{doc.doc_img.url}}" class="card-img-top rounded h-75"  alt="">
+                <img src="{{doc.doc_img.url}}" class="card-img-top rounded h-50"  alt="">
             {%elif doc.doc_gender == male%}
-                <img src="{%static 'images/docMale.avif'%}" class="card-img-top rounded h-75"  alt="">
+                <img src="{%static 'images/docMale.avif'%}" class="card-img-top rounded h-50"  alt="">
             {%else%}
-                <img src="{%static 'images/docFemale.jpg'%}" class="card-img-top rounded h-75"  alt="">
+                <img src="{%static 'images/docFemale.jpg'%}" class="card-img-top rounded h-50"  alt="">
             {%endif%}
-            <div class="card-body overflow-visible">
-                <h4>Dr.{{doc.doc_name}}</h4>
+            <div class="card-body ">
+                <h4 class="text-capitalize text-center">Dr.{{doc.doc_name}}</h4>
 
-                <h4>{{doc.doc_spe}}</h4>
-                <a href="{%url 'appointmenturl'%}" class="btn btn-dark">Book Appointment</a>
+                <h4 class="text-capitalize text-center">{{doc.doc_spe}}</h4>
+                {%for disease,diseaseList in all_diseases.items%}
+                    
+                    {%if doc.doc_spe == disease%}
+                        <div class="g-2 m-2">
+                            {%for dis in diseaseList%}
+                                    <a href="" class="btn btn-light text-primary m-1 text-capitalize">{{dis}}</a>
+                            {%endfor%}
+                       </div>
+                    {%endif%}
+                {%endfor%}
+                <div class="d-flex justify-content-center align-self-end">
+                    <a href="{%url 'appointmenturl'%}" class="btn btn-dark m-2   ">Book Appointment</a>
+                </div>
             </div>
         </div>
     {%endfor%}

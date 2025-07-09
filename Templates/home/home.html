@@ -8,7 +8,8 @@
     </li>
     <li class="nav-item">
       <i class="fa-brands fa-facebook-f"></i>
-      instagram links</li>
+      instagram links
+    </li>
     <li class="nav-item">book appointments</li>
     <li class="nav-item"><a href="{%url 'loginurl'%}">Employee Login</a></li>
   </ul>
@@ -17,7 +18,9 @@
   <ul class="nav d-flex justify-content-around nav_ul">
     <li class="nav-item"><a href="">HOME</a></li>
     <li class="nav-item"><a href="{%url 'patientopurl'%}">Patient op</a></li>
-    <li class="nav-item"><a href="{%url 'appointmenturl'%}">Appointments</a></li>
+    <li class="nav-item">
+      <a href="{%url 'appointmenturl'%}">Appointments</a>
+    </li>
     <li class="nav-item"><a href="">bill</a></li>
     <li class="nav-item"><a href="{%url 'adddoctorurl'%}">doctors</a></li>
     <li class="nav-item"><a href="">our team</a></li>
@@ -33,7 +36,7 @@
   </ul>
 </section>
 <section class="spe_list container mt-5 container-fluid">
-  <h3>Centers of Excellence</h3>
+  <h3 class="m-4">Centers of Excellence</h3>
   <ul class="nav provides">
     {%for img in images%}
     <li>
@@ -56,12 +59,47 @@
         <img
           src="{%static 'images/'%}{{doc.img}}"
           alt=""
-          class="card-img-top"
+          class="card-img-top mh-50"
         />
       </div>
     </li>
     {%endfor%}
-    
   </ul>
+</section>
+
+<section class="container-fluid mb-5">
+  <h3 class="text-center text-capitalize m-4 ">our values</h3>
+  <div  style="grid-template-columns: 1fr 1fr 1fr;" class="d-grid gap-2 column-gap-1 ">
+    <div class="card p-2 shadow">
+      <h4 class="card-text text-start ms-5">Expertise</h4>
+      <div class="card-body">
+        <p class="card-text">
+          All our doctors, nurses and non-medical staff are committed to being
+          the most skilled and knowledgeable in their respective fields. We
+          invest in the most advanced and innovative treatments.
+        </p>
+      </div>
+    </div>
+    <div class="card p-2 shadow ">
+      <h4 class="card-text text-start ms-5">Excellence</h4>
+      <div class="card-body">
+        <p class="card-text">
+          We strive for excellence in every aspect of your experience right from
+          providing state of the art facilities, compassionate guidance, highest
+          quality care to exceptional medical outcomes.
+        </p>
+      </div>
+    </div>
+    <div class="card p-2 shadow">
+      <h4 class="card-text text-start ms-5">Empathy</h4>
+      <div class="card-body">
+        <p class="card-text">
+          Patients are more than a medical case - they are individuals with
+          unique needs and concerns. We foster a culture of empathy among our
+          staff, ensuring that you all feel heard, understood and supported.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 {%endblock%}
