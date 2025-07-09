@@ -7,7 +7,7 @@ doc_names = [{'img':'doc1.jpg'},{'img':'doc2.jpg'},{'img':'doc3.jpg'}]
 cardiology = ['heartattack','heart','chest pain','heart strock','heart pain']
 neurology = ["epilepsy", "multiple sclerosis", "Parkinson's disease", "brain tumors", "cerebral palsy", "Alzheimer","dementia"]
 dermatology = ['eczema', 'psoriasis', 'acne', 'moles', 'fungal infections','itch','skin allergy']
-
+all_diseases = {'cardiology':cardiology,'neurology':neurology,'dermatology':dermatology}
 
 class Home(View):
     def get(self,req):
@@ -59,4 +59,10 @@ class AddDoctor(View):
 class Appointments(View):
     def get(self,req):
         docs = Doctors.objects.all()
-        return render(req,'home/appointments.html',{'docs':docs})
+        # docAndDis = []
+        # for doc in docs:
+        #     for disease in all_diseases:
+        #         if doc.doc_spe == disease:
+        #             docAndDis.append(doc.doc_spe+)
+                    
+        return render(req,'home/appointments.html',{'docs':docs,'all_diseases':all_diseases})
