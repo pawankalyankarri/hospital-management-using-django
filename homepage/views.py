@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from .models import Doctors,Patients
 # Create your views here.
-img = [{'img':'cardiology.jpg'},{'img':'dermatology.jpg'}]
+img = [{'img':'heart1.png','text':'Heart & Minimally Invasive Cardiac Surgery'},{'img':'gastic.webp','text':'Gastroenterology & Invasive GI Surgery'},{'img':'neurology.jpg','text':'Neruology & Endoscopic Spine Centre'},{'img':'kidney.jpeg','text':'Kidney Care & Renal Transplantation'},{'img':'cancer.avif','text':'Cancer,Hematology & Bone Marrow Transplantation'},{'img':'orthopedic.jpg','text':'Orthopedics & and Joint Replacement Surgery'},{'img':'ambulence.jpg','text':'24/7 Empergency and Trauma Care'},{'img':'robotic joint.png','text':'Robotic Joint Replacement Surgery'},{'img':'lungs.jpg','text':'Interventional Pulmonology & Critical Care'},{'img':'liver.jpg','text':'Liver,HPB & Liver Transplantation'}]
 doc_names = [{'img':'doc1.jpg'},{'img':'doc2.jpg'},{'img':'doc3.jpg'}]
 cardiology = ['heartattack','heart','chest pain','heart strock','heart pain']
 neurology = ["epilepsy", "multiple sclerosis", "Parkinson's disease", "brain tumors", "cerebral palsy", "Alzheimer","dementia"]
