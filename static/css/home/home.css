@@ -49,16 +49,24 @@
     overflow: hidden;
     font-weight: bold;
 }
+ /* Centers of Excellence */
 .spe_list .nav li{
-    width: 40vw;
-    height: 50vh;
-}
-.spe_list .nav li img{
-    width: 100%;
-    height:280px;
-    object-fit:cover;
+    /* width: 15vw;
+    max-height: 20vh; */
+    width: 17%;
+    height: 20%;
     
 }
+.spe_list .nav li img{
+    /* width: 100%;
+    height:50%;
+    object-fit:cover; */
+    height: 70%;
+    
+}
+.spe_list .provides .provide p{
+    
+ }
 .doc_img_sec ul{
     width: 100vw;
 }
@@ -71,4 +79,9 @@
     width: 30vw;
     height: 50vh;
 }
-
+/* contact and address */
+.address{
+    background-color: blue !important;
+    color:white !important;
+    font-size: larger !important;
+}
