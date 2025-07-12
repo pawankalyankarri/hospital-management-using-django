@@ -16,6 +16,9 @@
 .loginlinks{
     background-color: aliceblue;
     max-width: 100%;
+    position: sticky;
+    top:0;
+    z-index: 5;
 
 }
 .nav_ul .nav-item{
@@ -81,7 +84,11 @@
 }
 /* contact and address */
 .address{
-    background-color: blue !important;
+    background-color: rgb(65, 137, 65) !important;
     color:white !important;
-    font-size: larger !important;
+   
+}
+
+.promotions{
+    margin-top: 10%;
 }

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{%static 'css/home/home.css'%}" />
 {%endblock%} {%block body%}
 <header class="container-fluid">
-  <ul class="nav d-flex justify-content-around head_ul">
+  <ul class="nav navbar d-flex justify-content-around head_ul">
     <li class="nav-item">
       <!-- <img src="{%static 'images/hospitalImg.jpg'%}" alt=""> -->
     </li>
@@ -14,8 +14,8 @@
     <li class="nav-item"><a href="{%url 'loginurl'%}">Employee Login</a></li>
   </ul>
 </header>
-<nav class="container-fluid loginlinks">
-  <ul class="nav d-flex justify-content-around nav_ul">
+<nav class="container-fluid loginlinks" >
+  <ul class="nav navbar d-flex justify-content-around nav_ul" >
     <li class="nav-item"><a href="">HOME</a></li>
     <li class="nav-item"><a href="{%url 'patientopurl'%}">Patient op</a></li>
     <li class="nav-item">
@@ -35,19 +35,19 @@
     <li>4</li>
   </ul>
 </section>
-<section class="spe_list container mt-5 mb-5 container-fluid" >
+<section class="spe_list container mt-5 mb-5 container-fluid">
   <h3 class="m-4">Centers of Excellence</h3>
-  <ul class="nav provides d-flex flex-row container gap-4" >
+  <ul class="nav provides d-flex flex-row container gap-4">
     {%for img in images%}
-    <li class="" >
-      <div class="provide card shadow" style="max-width: 12rem;height: 18rem;">
+    <li class="">
+      <div class="provide card shadow" style="max-width: 12rem; height: 18rem">
         <img
           src="{%static 'images/'%}{{img.img}}"
           class="card-img-top"
           alt=""
         />
         <div class="card-body d-flex align-items-end">
-          <p class="card-text ">{{img.text}}</p>
+          <p class="card-text">{{img.text}}</p>
         </div>
       </div>
     </li>
@@ -164,48 +164,50 @@
     <h3 class="text-center fw-bold fs-3">Patient Experience</h3>
   </div>
   <div class="d-flex row col-12">
-    <div class="col-4">
-      <p>Here video</p>
-      <p>person</p>
-      <p>reveiw</p>
+    {%for pat_rev in reviews%}
+      <div class="col-4">
+      
+      <iframe
+        src="{{pat_rev.src}}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+
+      <p>{{pat_rev.name}}</p>
+      <p>{{pat_rev.review}}</p>
     </div>
-    <div class="col-4">
-      <p>Here video</p>
-      <p>person</p>
-      <p>reveiw</p>
-    </div>
-    <div class="col-4">
-      <p>Here video</p>
-      <p>person</p>
-      <p>reveiw</p>
-    </div>
+
+    {%endfor%}
+    
   </div>
 </section>
-<section class="container " >
-  <div class="row col-12 add-cont ">
+<section class="container text-capitalize">
+  <div class="row col-12 add-cont">
     <div class="p-5">
       <h3 class="text-center fw-bold fs-3">Reach Out Us</h3>
     </div>
-    <div class="col-6 address">
-      <h4><i class="fa-solid fa-location-dot"></i> &emsp; Our Location</h4>
-      <ul>
-        <li>Hyderabad</li>
-        <li>Telangana</li>
+    <div class="col-6 address fs-3 p-5">
+      <h4><i class="fa-solid fa-location-dot"></i> &nbsp; Our Location</h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">Hyderabad</li>
+        <li class="ms-5 fs-5">Telangana</li>
       </ul>
-      <h4><i class="fa-solid fa-phone"></i> &emsp; Call Us</h4>
-      <ul>
-        <li>1234506789</li>
+      <h4><i class="fa-solid fa-phone"></i> &nbsp; Call Us</h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">1234506789</li>
       </ul>
       <h4>
-        <i class="fa-solid fa-truck-medical"></i> &emsp; 24*7 Emergency services
+        <i class="fa-solid fa-truck-medical"></i> &nbsp; 24*7 Emergency services
       </h4>
-      <ul>
-        <li>9876543211</li>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">9876543211</li>
       </ul>
-      <h4><i class="fa-solid fa-clock"></i> &emsp; OPD Timings</h4>
-      <ul>
-        <li>Monday - Saturday</li>
-        <li>9:00 AM - 5:00 PM</li>
+      <h4><i class="fa-solid fa-clock"></i> &nbsp; OPD Timings</h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">Monday - Saturday</li>
+        <li class="ms-5 fs-5">9:00 AM - 5:00 PM</li>
       </ul>
     </div>
   </div>
