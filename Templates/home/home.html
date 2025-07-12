@@ -1,21 +1,47 @@
 {%extends 'base.html'%} {%block styles%} {%load static%}
 <link rel="stylesheet" href="{%static 'css/home/home.css'%}" />
 {%endblock%} {%block body%}
-<header class="container-fluid">
+<header class="container-fluidy ">
   <ul class="nav navbar d-flex justify-content-around head_ul">
     <li class="nav-item">
-      <!-- <img src="{%static 'images/hospitalImg.jpg'%}" alt=""> -->
+      <img src="{%static 'images/hospitallogo7.webp'%}" alt="">
+    </li>
+    <li class="nav-item icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="bi bi-whatsapp"></i>
+      <!-- twitter svg file -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-twitter-x"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+        />
+      </svg>
+      <i class="bi bi-instagram"></i>
+      <i class="bi bi-linkedin"></i>
+      
+    </li>
+    <li class="nav-item d-flex gap-4 p-2 call">
+      <i class="fa-solid fa-phone ms-3"></i>
+      <div class="text-decoration-none">
+        <a href="">Book Appointments</a><br />
+        <a href="">1234567890</a>
+      </div>
     </li>
     <li class="nav-item">
-      <i class="fa-brands fa-facebook-f"></i>
-      instagram links
+      <a href="{%url 'loginurl'%}" class="btn btn-outline-success"
+        >Employee Login</a
+      >
     </li>
-    <li class="nav-item">book appointments</li>
-    <li class="nav-item"><a href="{%url 'loginurl'%}">Employee Login</a></li>
   </ul>
 </header>
-<nav class="container-fluid loginlinks" >
-  <ul class="nav navbar d-flex justify-content-around nav_ul" >
+<nav class="container-fluid loginlinks">
+  <ul class="nav navbar d-flex justify-content-around nav_ul">
     <li class="nav-item"><a href="">HOME</a></li>
     <li class="nav-item"><a href="{%url 'patientopurl'%}">Patient op</a></li>
     <li class="nav-item">
@@ -26,7 +52,26 @@
     <li class="nav-item"><a href="">our team</a></li>
   </ul>
 </nav>
-<section class="promotions container-fluid"></section>
+<section class="sidebar list-unstyled">
+  <ul>
+    <li class="nav-item">
+      <i class="fa-regular fa-calendar-check"></i><br /><span
+        >Book An Appointment</span
+      >
+    </li>
+    <li class="nav-item">
+      <i class="fa-solid fa-comment-dots"></i> <br /><span>Text Us</span>
+    </li>
+  </ul>
+</section>
+<section class="promotions row">
+  <video autoplay muted class="col-12 h-50">
+    <source
+      src="{% static 'images/hospitalpromotion.mp4' %}"
+      type="video/mp4"
+    />
+  </video>
+</section>
 <section class="have">
   <ul class="nav d-flex justify-content-around reviews">
     <li>1</li>
@@ -165,8 +210,7 @@
   </div>
   <div class="d-flex row col-12">
     {%for pat_rev in reviews%}
-      <div class="col-4">
-      
+    <div class="col-4">
       <iframe
         src="{{pat_rev.src}}"
         frameborder="0"
@@ -180,7 +224,6 @@
     </div>
 
     {%endfor%}
-    
   </div>
 </section>
 <section class="container text-capitalize">

@@ -7,11 +7,35 @@
     object-fit: cover;
     overflow: hidden;
 } */
+ .head_ul li img{
+    height: 100%;
+    width: 50%;
+ }
 .head_ul .nav-item{
-    height: 15vh;
+    height: 13vh;
     width: 20vw;
-    background-color: red;
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
 }
+.head_ul .icons i,.head_ul .icons svg{
+    font-size: x-large;
+}
+.head_ul .icons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.head_ul .call{
+    border: 2px solid red;
+    border-radius: 7%;
+    text-align: center;
+}
+.head_ul li div a{
+    text-decoration: none;
+    font-size:medium;
+
+}
+
 
 .loginlinks{
     background-color: aliceblue;
@@ -19,10 +43,11 @@
     position: sticky;
     top:0;
     z-index: 5;
+    
 
 }
 .nav_ul .nav-item{
-    height: 15vh;
+    height: 10vh;
     width: 15vw;
     display: grid;
     place-items: center;
@@ -88,7 +113,45 @@
     color:white !important;
    
 }
+.sidebar{
+    position: sticky;
+    right:0px;
+    top:50%;
+    z-index: 1;
+
+}
+.sidebar ul{
+    list-style-type: none;
+    position: absolute;
+    right:0px;
+    top:50%;
+    border-top-left-radius: 10%;
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; */
+    
+    background-color: black;
+    color: white;
+    padding:1%;
+    width: 8vw;
+    font-size:medium;
+    font-weight:700;
+    text-align: center;
+}
+
+.sidebar ul li span{
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+.sidebar ul li span:hover{
+    background-color: white;
+    color:black;
+    border-radius: 7%;
+
+}
+
 
 .promotions{
-    margin-top: 10%;
+    margin-bottom: 5%;
 }
