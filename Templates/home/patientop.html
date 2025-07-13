@@ -3,13 +3,14 @@
 {%block styles%}
     {%load static%}
     <link rel="stylesheet" href="{%static 'css/login/patientLogin.css'%}">
+    
 {%endblock%}
 
 
 {%block body%}
 
 <div class="patient_form w-100 text-capitalize">
-  <form action="" class="row d-flex flex-column container " method="post">
+  <form action="" class="row d-flex flex-column container " method="post" onsubmit="return validatePatOp()">
     {%csrf_token%}
   <div class="form_container p-2  row col-12">
     <div class=" col-5  mt-1">
@@ -41,8 +42,10 @@
     <label for="" class="form-label">Choose your disease</label>
     <input type="text" list="diseases" name="disease" class="form-control" placeholder="Disease">
     <datalist id="diseases">
-      {%for doc in doc_obj%}
-        <option value="{{doc.doc_spe}}"></option>
+      {%for doc,diseases in all_diseases.items%}
+         {%for disease in diseases%}
+            <option value="{{disease}}"></option>
+         {%endfor%}
       {%endfor%}
 
     </datalist>
@@ -59,4 +62,7 @@
   <div class="col-5 mt-1"><input type="submit" class="btn btn-primary" value="Generate op"></div>
   </div>
 </form></div>
+{%endblock%}
+{%block scripts%}
+  <script src="{% static 'js/patientop.js' %}"></script>
 {%endblock%}

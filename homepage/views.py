@@ -68,8 +68,8 @@ class Home(View):
 
 class Patientop(View):
     def get(self, req):
-        doc_obj = Doctors.objects.all()
-        return render(req, "home/patientop.html", {"doc_obj": doc_obj})
+        # doc_obj = Doctors.objects.all()
+        return render(req, "home/patientop.html", {"all_diseases": all_diseases})
 
     def post(self, req):
         print(req.POST)
