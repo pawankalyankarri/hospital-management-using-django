@@ -152,3 +152,8 @@ class Appointments(View):
         return render(
             req, "home/appointments.html", {"docs": docs, "all_diseases": all_diseases}
         )
+
+class OurDoctors(View):
+    def get(self,req):
+        docs = Doctors.objects.all()
+        return render(req,'home/ourDoctors.html',{'docs':docs})

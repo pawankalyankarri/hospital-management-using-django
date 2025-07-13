@@ -1,7 +1,7 @@
 {%extends 'base.html'%} {%block styles%} {%load static%}
 <link rel="stylesheet" href="{%static 'css/home/home.css'%}" />
 {%endblock%} {%block body%}
-<header class="container-fluidy ">
+<header class="container-fluid ">
   <ul class="nav navbar d-flex justify-content-around head_ul">
     <li class="nav-item">
       <img src="{%static 'images/hospitallogo7.webp'%}" alt="">
@@ -47,7 +47,7 @@
     <li class="nav-item">
       <a href="{%url 'appointmenturl'%}">Appointments</a>
     </li>
-    <li class="nav-item"><a href="">bill</a></li>
+    <li class="nav-item"><a href="{% url 'ourdoctorsurl' %}">Our Doctors</a></li>
     <li class="nav-item"><a href="{%url 'adddoctorurl'%}">doctors</a></li>
     <li class="nav-item"><a href="">our team</a></li>
   </ul>
@@ -214,8 +214,9 @@
       <iframe
         src="{{pat_rev.src}}"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
+        
       >
       </iframe>
 

@@ -20,6 +20,7 @@
 }
 .head_ul .icons i,.head_ul .icons svg{
     font-size: x-large;
+    cursor: pointer;
 }
 .head_ul .icons{
     display: flex;
@@ -92,9 +93,7 @@
     height: 70%;
     
 }
-.spe_list .provides .provide p{
-    
- }
+
 .doc_img_sec ul{
     width: 100vw;
 }
@@ -132,22 +131,24 @@
     
     background-color: black;
     color: white;
-    padding:1%;
+    padding:0.5%;
     width: 8vw;
-    font-size:medium;
-    font-weight:700;
+    font-size:small;
+    font-weight:500;
     text-align: center;
 }
 
 .sidebar ul li span{
     display: block;
     width: 100%;
+    padding:2%;
     cursor: pointer;
 }
 .sidebar ul li span:hover{
     background-color: white;
     color:black;
-    border-radius: 7%;
+    border-radius: 10%;
+
 
 }
 
