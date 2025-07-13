@@ -5,6 +5,7 @@ urlpatterns = [
     path('',views.Home.as_view(),name='homeurl'),
     path('op/',views.Patientop.as_view(),name='patientopurl'),
     path('doctor/',views.AddDoctor.as_view(),name='adddoctorurl'),
-    path('appointment/',views.Appointments.as_view(),name='appointmenturl')
+    path('appointment/',views.Appointments.as_view(),name='appointmenturl'),
+    path('ourdoctors/',views.OurDoctors.as_view(),name='ourdoctorsurl')
     
 ]
