@@ -1,7 +1,15 @@
-{%extends 'base.html'%}
-
-{% block body%}
-    <main>
-        
-    </main>
+{%extends 'base.html'%} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'css/home/ourDoctors.css' %}" />
+{% endblock %} {% block body%}
+<main class="container doctors">
+  {% for doc in docs%}
+  <div class="card">
+    <img src="{{doc.doc_img.url}}" class="card-img-top" alt="" />
+    <div class="card-body">
+      <h3>Dr. {{doc.doc_name}}</h3>
+      <h5>{{doc.doc_spe}}</h5>
+    </div>
+  </div>
+  {%endfor%}
+</main>
 {%endblock%}
