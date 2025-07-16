@@ -1,0 +1,16 @@
+.doctors{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.doctors .card{
+    width:25vw;
+    height: 50vh;
+    
+}
+.doctors .card img{
+    width:100%;
+    height: 75%;
+}
