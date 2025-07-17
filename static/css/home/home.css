@@ -97,10 +97,11 @@
 .doc_img_sec ul{
     width: 100vw;
 }
-.doc_img_sec ul img{
+.doc_img_sec ul .li-item .card img{
     width: 100%;
     height:295px;
     object-fit:cover;
+    object-position: top;
 }
 .doc_img_sec .nav li{
     width: 30vw;

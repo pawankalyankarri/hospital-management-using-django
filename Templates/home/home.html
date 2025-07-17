@@ -102,12 +102,12 @@
 <section class="doc_img_sec container-fluid">
   <ul class="nav d-flex justify-content-around">
     {%for doc in doc_names%}
-    <li>
+    <li class="li-item">
       <div class="card">
         <img
           src="{%static 'images/'%}{{doc.img}}"
           alt=""
-          class="card-img-top mh-50"
+          class="card-img-top "
         />
       </div>
     </li>
