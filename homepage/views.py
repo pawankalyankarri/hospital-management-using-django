@@ -26,6 +26,75 @@ neurology = [
     "Alzheimer",
     "dementia",
 ]
+ophthalmologist = [
+    "Eyestrain",
+    "Red Eyes",
+    "Uveitis",
+    "Night Blindness",
+    "Colorblindness",
+    "Blurred vision",
+    "Dry Eyes",
+    "Retinal Disorders",
+    "Conjunctivitis",
+    "Corneal Diseases",
+    "Eyelid Problems",
+]
+gastroenterologist = [
+    "Constipation",
+    "Acid reflux",
+    "Irritable bowel syndrome (IBS)",
+    "Hemorrhoids",
+    "acidity",
+    "Diverticular disease",
+    "Colitis",
+    "Colon polyps and colon cancer",
+    "Celiac disease",
+    "Gastritis",
+]
+Hepatologist = [
+    "Cirrhosis",
+    "liver cancer",
+    "Hepatitis",
+    "Alcoholic Hepatitis",
+    "ALD",
+    "Fatty liver disease ",
+    "Hepatitis (A, B, C, D, E)",
+    "Wilson's disease",
+]
+Nephrologist = [
+    "Glomerulonephritis",
+    "Diagnosis",
+    "Diabetes",
+    "Kidney Stones",
+    "Kidney Infections",
+    "Nephrotic Syndrome",
+    "Chronic Kidney Disease (CKD)",
+    "Abrupt Kidney Impairment (AKI)",
+    "Polycystic Kidney Disease (PKD)",
+]
+Orthopedist = [
+    "Arthritis",
+    "Fractures",
+    "Bursitis",
+    "Low Back Pain",
+    "Foot Pain and Problems",
+    "Hip Fracture",
+    "Hand Pain and Problems",
+    "Knee Pain and Problems",
+    "Neck Pain and Problems",
+    "Shoulder Pain and Problems",
+]
+Allergist = [
+    "Rash",
+    "Allergens",
+    "Casein",
+    "Antibodies",
+    "Dust Allergy",
+    "Hair Dye Allergy",
+    "food allergy",
+    "Egg Allergy",
+    "Wheat Allergy",
+]
 dermatology = [
     "eczema",
     "psoriasis",
@@ -35,10 +104,27 @@ dermatology = [
     "itch",
     "skin allergy",
 ]
+limited_all_diseases = {
+    "cardiology": cardiology[:6],
+    "neurology": neurology[:6],
+    "dermatology": dermatology[:6],
+    "Ophthalmologist": ophthalmologist[:6],
+    "gastroenterologist": gastroenterologist[:6],
+    "Hepatologist": Hepatologist[:6],
+    "Nephrologist": Nephrologist[:6],
+    "Orthopedist": Orthopedist[:6],
+    "Allergist": Allergist[:6],
+}
 all_diseases = {
     "cardiology": cardiology,
     "neurology": neurology,
     "dermatology": dermatology,
+    "Ophthalmologist": ophthalmologist,
+    "gastroenterologist": gastroenterologist,
+    "Hepatologist": Hepatologist,
+    "Nephrologist": Nephrologist,
+    "Orthopedist": Orthopedist,
+    "Allergist": Allergist,
 }
 
 patient_reviews = [
@@ -63,7 +149,11 @@ patient_reviews = [
 class Home(View):
     def get(self, req):
 
-        return render(req, "home/home.html", {"images": img, "doc_names": doc_names,"reviews":patient_reviews})
+        return render(
+            req,
+            "home/home.html",
+            {"images": img, "doc_names": doc_names, "reviews": patient_reviews},
+        )
 
 
 class Patientop(View):
@@ -150,10 +240,13 @@ class Appointments(View):
         #             docAndDis.append(doc.doc_spe+)
 
         return render(
-            req, "home/appointments.html", {"docs": docs, "all_diseases": all_diseases}
+            req,
+            "home/appointments.html",
+            {"docs": docs, "all_diseases": limited_all_diseases},
         )
 
+
 class OurDoctors(View):
-    def get(self,req):
+    def get(self, req):
         docs = Doctors.objects.all()
-        return render(req,'home/ourDoctors.html',{'docs':docs})
+        return render(req, "home/ourDoctors.html", {"docs": docs})

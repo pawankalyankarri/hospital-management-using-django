@@ -1,36 +1,36 @@
 {%extends 'base.html'%}
-{%load static%}
+{% load static %}
 {%block styles%}
-    <link rel="stylesheet" href="{% static 'css/home/appointments.css'%}">
+    <link rel="stylesheet" href="{% static 'css/home/appointments.css' %}">
 
 {%endblock%}
 {%block body%}
-<section class="container row col-12 " style="margin: 3%;" >
+<section class="container  docs-group " >
     {%for doc in docs%}
-        <div class="card col-4  " >
+        <div class="card doc " >
             {%if doc.doc_img%}
-                <img src="{{doc.doc_img.url}}" class="card-img-top rounded h-50"  alt="">
+                <img src="{{doc.doc_img.url}}" class="card-img-top rounded "  alt="">
             {%elif doc.doc_gender == male%}
-                <img src="{%static 'images/docMale.avif'%}" class="card-img-top rounded h-50"  alt="">
+                <img src="{%static 'images/docMale.avif'%}" class="card-img-top rounded "  alt="">
             {%else%}
-                <img src="{%static 'images/docFemale.jpg'%}" class="card-img-top rounded h-50"  alt="">
+                <img src="{%static 'images/docFemale.jpg'%}" class="card-img-top rounded "  alt="">
             {%endif%}
             <div class="card-body ">
                 <h4 class="text-capitalize text-center">Dr.{{doc.doc_name}}</h4>
 
-                <h4 class="text-capitalize text-center">{{doc.doc_spe}}</h4>
+                <h6 class="text-capitalize text-center">{{doc.doc_spe}}</h6>
                 {%for disease,diseaseList in all_diseases.items%}
                     
                     {%if doc.doc_spe == disease%}
-                        <div class="g-2 m-2">
+                        <div class="">
                             {%for dis in diseaseList%}
                                     <a href="" class="btn btn-light text-primary m-1 text-capitalize">{{dis}}</a>
                             {%endfor%}
                        </div>
                     {%endif%}
                 {%endfor%}
-                <div class="d-flex justify-content-center align-self-end">
-                    <a href="{%url 'appointmenturl'%}" class="btn btn-dark m-2   ">Book Appointment</a>
+                <div class="button-div">
+                    <a href="{%url 'appointmenturl'%}" class="btn btn-outline-dark m-2   ">Book Appointment</a>
                 </div>
             </div>
         </div>
