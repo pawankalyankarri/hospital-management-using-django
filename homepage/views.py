@@ -86,23 +86,26 @@ Orthopedist = [
 ]
 Allergist = [
     "Rash",
-    "Allergens",
-    "Casein",
-    "Antibodies",
-    "Dust Allergy",
     "Hair Dye Allergy",
-    "food allergy",
-    "Egg Allergy",
+    "Antibodies",
     "Wheat Allergy",
+    "Dust Allergy",
+    "food allergy",
+     "Casein",
+    
+    "Allergens",
+    "Egg Allergy",
+    
 ]
 dermatology = [
     "eczema",
     "psoriasis",
+    "skin allergy",
     "acne",
     "moles",
     "fungal infections",
     "itch",
-    "skin allergy",
+    
 ]
 limited_all_diseases = {
     "cardiology": cardiology[:6],
