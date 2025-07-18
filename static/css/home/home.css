@@ -61,12 +61,22 @@
 }
 .have,.reviews{
     width: 100vw;
+    background-color: blue;
+    color:whitesmoke;
+    font-size: xx-large;
+}
+.have .reviews li{
+    width: 20vw;
+    height: 30vh;
 
 }
-.have .nav li{
-    width: 20vw;
-    height: 10vh;
-    background-color: blue;
+.have .reviews li div img,.have .reviews li div i{
+    width:15%;
+    height: 15%;
+}
+.have .reviews li div{
+    display: flex;
+    
 }
 /* provides */
 .spe_list .provides{
