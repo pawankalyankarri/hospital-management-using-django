@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import Doctors, Patients
+from datetime import datetime,timedelta
+
 
 # Create your views here.
 img = [
@@ -218,18 +220,41 @@ class AddDoctor(View):
 
     def post(self, req):
         print(req.POST)
-        dname = req.POST["dname"]
-        dmobile = req.POST["dmobile"]
-        dgender = req.POST["gender"]
-        dage = int(req.POST["dage"])
-        dspec = req.POST["dspec"]
-        Doctors.objects.create(
-            doc_name=dname,
-            doc_spe=dspec,
-            doc_mobile=dmobile,
-            doc_gender=dgender,
-            doc_age=dage,
-        )
+        # dname = req.POST["dname"]
+        # dmobile = req.POST["dmobile"]
+        # dgender = req.POST["gender"]
+        # dage = int(req.POST["dage"])
+        # dspec = req.POST["dspec"]
+        # Doctors.objects.create(
+        #     doc_name=dname,
+        #     doc_spe=dspec,
+        #     doc_mobile=dmobile,
+        #     doc_gender=dgender,
+        #     doc_age=dage,
+        # )
+        
+        time = req.POST['time']
+        time = datetime.strptime(time,'%H:%M')
+        def generate_slots(start_time,slot_duration):
+            slots = []
+            current = start_time
+            for _ in range(10):
+                slot = current.strftime('%I:%M %p')
+                slots.append(slot)
+                current+=slot_duration
+            return slots
+        
+        res = generate_slots(time,timedelta(minutes=20))
+        print(res)
+                
+        
+        
+        
+        
+                
+                
+                
+        
         return redirect("adddoctorurl")
 
 
