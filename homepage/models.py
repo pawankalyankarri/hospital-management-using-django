@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+    
+    
 class Doctors(models.Model):
     doc_id = models.AutoField(primary_key=True)
     doc_name = models.CharField(max_length=30)
@@ -10,9 +12,37 @@ class Doctors(models.Model):
     doc_mobile = models.CharField(max_length=17)
     doc_age = models.IntegerField()
     doc_img = models.ImageField(upload_to='images/',null=True)
-    
+       
     def __str__(self):
         return self.doc_spe
+    
+
+
+class Doc_slots(models.Model):
+    slot_id = models.AutoField(primary_key=True)
+    slot1 = models.TimeField()
+    slot2 = models.TimeField()
+    slot3 = models.TimeField()
+    slot4 = models.TimeField()
+    slot5 = models.TimeField()
+    slot6 = models.TimeField()
+    slot7 = models.TimeField()
+    slot8 = models.TimeField()
+    slot9 = models.TimeField()
+    slot1 = models.TimeField()
+    slot10 = models.TimeField()
+    slot11 = models.TimeField()
+    slot12 = models.TimeField()
+    slot13 = models.TimeField()
+    slot14 = models.TimeField()
+    slot15 = models.TimeField()
+    doc_id = models.ForeignKey(Doctors,on_delete=models.SET_NULL,null=True)
+    
+    def __str__(self):
+        return self.doc_id.doc_spe
+    
+    
+    
     
 class Patients(models.Model):
     pat_id = models.AutoField(primary_key=True)

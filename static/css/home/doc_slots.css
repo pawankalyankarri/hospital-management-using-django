@@ -1,0 +1,37 @@
+.doc_slots{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5%;
+    width: 100vw;
+    height: 100vh;
+}
+.doc_slots .left{
+    width: 50%;
+    height: auto;
+}
+.doc_slots .right{
+    width: 50%;
+    height: 90%;
+}
+
+.doc_slots .left .dis_list{
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+    
+    
+}
+.doc_slots .left .dis_list .btn{
+    margin:1%;
+}
+
+.doc_slots .right .slots{
+    margin-top: 55%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.doc_slots .right .slots .btn{
+    margin:1%;
+}
