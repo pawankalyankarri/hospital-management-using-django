@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {%load static%} {%block styles%}
+<link rel="stylesheet" href="{% static 'css/home/doc_slots.css'%}" />
+{%endblock%} {%block body%}
+<div class="container doc_slots mt-3">
+  <section class="left card shadow">
+    <div>
+      <img
+        src="{{doc.doc_img.url}}"
+        width="300px"
+        alt=""
+        class="card-img-top"
+      />
+      <div class="m-2">
+        <h3 class="text-capitalize text-center">Dr. {{doc.doc_name}}</h3>
+        <h5 class="text-capitalize text-center">{{doc.doc_spe}}</h5>
+        <h6 class="text-center">Select your disease type</h6>
+        <div class="dis_list">
+        {%for disease,dis_list in all_diseases.items%}
+                {%if doc.doc_spe == disease%} 
+                    {%for dis in dis_list%}
+                        <a href="" class="btn btn-outline-success text-capitalize">{{dis}}</a>
+                    {%endfor%} 
+                {%endif%}
+        {%endfor%}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="text-capitalize right">
+    <div class="w-50">
+      <label for="" class="form-label">select date</label>
+
+      <input
+        type="date"
+        min="{{ date.min|date:'Y-m-d' }}"
+        max="{{ date.max|date:'Y-m-d' }}"
+        class="form-control"
+      />
+    </div>
+    <div class="slots">
+      {%for slot in slots%}
+      <span class="btn btn-outline-primary">{{slot}}</span>
+
+      {%endfor%}
+    </div>
+  </section>
+</div>
+
+{%endblock%}

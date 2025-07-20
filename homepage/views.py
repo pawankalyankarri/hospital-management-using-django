@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Doctors, Patients
-from datetime import datetime,timedelta
+from .models import Doctors, Patients,Doc_slots
+from datetime import datetime,timedelta,date
 
 
 # Create your views here.
@@ -216,40 +216,67 @@ class AddDoctor(View):
 
     def post(self, req):
         print(req.POST)
-        # dname = req.POST["dname"]
-        # dmobile = req.POST["dmobile"]
-        # dgender = req.POST["gender"]
-        # dage = int(req.POST["dage"])
-        # dspec = req.POST["dspec"]
-        # Doctors.objects.create(
-        #     doc_name=dname,
-        #     doc_spe=dspec,
-        #     doc_mobile=dmobile,
-        #     doc_gender=dgender,
-        #     doc_age=dage,
-        # )
+      
         
-        time = req.POST['time']
-        time = datetime.strptime(time,'%H:%M')
+        input_time = req.POST['time']
+        time = datetime.strptime(input_time,'%H:%M')
         def generate_slots(start_time,slot_duration):
             slots = []
             current = start_time
             for _ in range(10):
-                slot = current.strftime('%I:%M %p')
+                slot = current.time()
                 slots.append(slot)
                 current+=slot_duration
+                
+            current +=(timedelta(minutes=120))   
+            for _ in range(5):
+                slot = current.time()
+                slots.append(slot)
+                current+=slot_duration
+                
             return slots
         
         res = generate_slots(time,timedelta(minutes=20))
         print(res)
-                
+       
         
+        dname = req.POST["dname"]
+        dmobile = req.POST["dmobile"]
+        dgender = req.POST["gender"]
+        dage = int(req.POST["dage"])
+        dspec = req.POST["dspec"]
+        d_img = req.FILES['doc_img']
+        Doctors.objects.create(
+            doc_name=dname,
+            doc_spe=dspec,
+            doc_mobile=dmobile,
+            doc_gender=dgender,
+            doc_age=dage,
+            doc_img = d_img
+            
+        )
+        doc_details = Doctors.objects.get(doc_mobile = dmobile)
+        it = iter(res)
+        Doc_slots.objects.create(
+                  slot1 = next(it),
+                  slot2 = next(it),
+                  slot3 = next(it),
+                  slot4 = next(it),
+                  slot5 = next(it),
+                  slot6 = next(it),
+                  slot7 = next(it),
+                  slot8 = next(it),
+                  slot9 = next(it),
+                  slot10 = next(it),
+                  slot11 = next(it),
+                  slot12 = next(it),
+                  slot13 = next(it),
+                  slot14 = next(it),
+                  slot15 = next(it),
+                  doc_id = doc_details
+                  )
         
-        
-        
-                
-                
-                
+       
         
         return redirect("adddoctorurl")
 
@@ -274,3 +301,19 @@ class OurDoctors(View):
     def get(self, req):
         docs = Doctors.objects.all()
         return render(req, "home/ourDoctors.html", {"docs": docs})
+    
+
+class DoctorSlots(View):
+    def get(self,req,pk):
+        doc_details = Doctors.objects.get(doc_id = pk)
+        doc_slots_details = Doc_slots.objects.get(doc_id = doc_details)
+        today_date = date.today()
+        max_date = today_date+timedelta(days=30)
+        date_min_max = {
+            'min':today_date,
+            'max':max_date
+        }
+        slots = [getattr(doc_slots_details,f'slot{i}').strftime('%I:%M %p') for i in range(1,16)]
+        
+        
+        return render(req,'home/doc_slots.html',{'doc':doc_details,'slots':slots,'all_diseases':all_diseases,'date':date_min_max})

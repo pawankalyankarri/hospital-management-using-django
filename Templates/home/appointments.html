@@ -5,12 +5,8 @@
 
 {%endblock%}
 {%block body%}
-<section>
-    <form action="">
-        
-    </form>
-</section>
-<section class="container  docs-group mt-5" >
+
+<section class="docs-group mt-5" >
     {%for doc in docs%}
         <div class="card doc " >
             {%if doc.doc_img%}
@@ -35,7 +31,7 @@
                     {%endif%}
                 {%endfor%}
                 <div class="button-div">
-                    <a href="{%url 'appointmenturl'%}" class="btn btn-outline-dark m-2   ">Book Appointment</a>
+                    <a href="{%url 'doctorslotsurl' doc.doc_id %}" class="btn btn-outline-dark m-2   ">Book Appointment</a>
                 </div>
             </div>
         </div>
