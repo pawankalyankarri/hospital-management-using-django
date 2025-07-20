@@ -14,18 +14,19 @@
     {%csrf_token%}
   <div class="form_container p-2  row col-12">
     <div class=" col-5  mt-1">
-    <label for="pn" class="form-label">Patient name</label
-    ><input type="text" id="pn" class="form-control" name="name"/>
+    <label for="pn" class="form-label">Patient name <span style="color:red">*</span></label
+    ><input type="text" id="pn" class="form-control" name="name"  aria-describedby="pat_name_error"/>
+    <div id="pat_name_error" style="color:red" ></div>
   </div>
   <div class=" col-5  mt-1">
     <label for="pa" class="form-label">patient age</label
-    ><input type="number" id="pa" class="form-control" name="age" />
+    ><input type="number" id="pa" class="form-control" name="age" required />
   </div>
   <div class=" col-5  mt-1">
     <!-- <label for="pg" class="form-label">patient gender</label
     ><input type="text" id="pg" class="form-control" name="gender" /> -->
     <label for="gender">Gender</label>
-    <select name="gender" id="gender" class="form-select">
+    <select name="gender" id="gender" class="form-select" required>
       <option value="" selected>Choose gender</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
@@ -34,13 +35,13 @@
   </div>
   <div class=" col-5  mt-1">
     <label for="padd" class="form-label">patient address(city name)</label
-    ><input type="text" id="padd" class="form-control" name="address" />
+    ><input type="text" id="padd" class="form-control" name="address" required />
   </div>
   <div class=" col-5  mt-1 mb-2">
     <!-- <label for="p_disease" class="form-label">disease</label
     ><input type="text" id="p_disease" class="form-control" name="desease" /> -->
     <label for="" class="form-label">Choose your disease</label>
-    <input type="text" list="diseases" name="disease" class="form-control" placeholder="Disease">
+    <input type="text" list="diseases" name="disease" class="form-control" placeholder="Disease" required>
     <datalist id="diseases">
       {%for doc,diseases in all_diseases.items%}
          {%for disease in diseases%}
@@ -52,10 +53,10 @@
   </div>
   <div class=" col-5  mt-1">
     <label for="pmn" class="form-label">patient mobile number</label
-    ><input type="tel" id="pmn" class="form-control"  name="mobile"/>
+    ><input type="tel" id="pmn" class="form-control"  name="mobile"  required/>
   </div>
   <div class=" col-5  mt-2">
-    <input type="checkbox" id="payment" class="form-check-input" name="payment" />
+    <input type="checkbox" id="payment" class="form-check-input" name="payment" required />
     <label for="payment" class="form-check-label" >payment</label
     >
   </div>

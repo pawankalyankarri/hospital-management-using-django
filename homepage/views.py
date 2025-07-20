@@ -53,7 +53,7 @@ gastroenterologist = [
     "Celiac disease",
     "Gastritis",
 ]
-Hepatologist = [
+hepatologist = [
     "Cirrhosis",
     "liver cancer",
     "Hepatitis",
@@ -63,7 +63,7 @@ Hepatologist = [
     "Hepatitis (A, B, C, D, E)",
     "Wilson's disease",
 ]
-Nephrologist = [
+nephrologist = [
     "Glomerulonephritis",
     "Diagnosis",
     "Diabetes",
@@ -74,7 +74,7 @@ Nephrologist = [
     "Abrupt Kidney Impairment (AKI)",
     "Polycystic Kidney Disease (PKD)",
 ]
-Orthopedist = [
+orthopedist = [
     "Arthritis",
     "Fractures",
     "Bursitis",
@@ -86,7 +86,7 @@ Orthopedist = [
     "Neck Pain and Problems",
     "Shoulder Pain and Problems",
 ]
-Allergist = [
+allergist = [
     "Rash",
     "Hair Dye Allergy",
     "Antibodies",
@@ -113,23 +113,23 @@ limited_all_diseases = {
     "cardiology": cardiology[:6],
     "neurology": neurology[:6],
     "dermatology": dermatology[:6],
-    "Ophthalmologist": ophthalmologist[:6],
+    "ophthalmologist": ophthalmologist[:6],
     "gastroenterologist": gastroenterologist[:6],
-    "Hepatologist": Hepatologist[:6],
-    "Nephrologist": Nephrologist[:6],
-    "Orthopedist": Orthopedist[:6],
-    "Allergist": Allergist[:6],
+    "hepatologist": hepatologist[:6],
+    "nephrologist": nephrologist[:6],
+    "orthopedist": orthopedist[:6],
+    "allergist": allergist[:6],
 }
 all_diseases = {
     "cardiology": cardiology,
     "neurology": neurology,
     "dermatology": dermatology,
-    "Ophthalmologist": ophthalmologist,
+    "ophthalmologist": ophthalmologist,
     "gastroenterologist": gastroenterologist,
-    "Hepatologist": Hepatologist,
-    "Nephrologist": Nephrologist,
-    "Orthopedist": Orthopedist,
-    "Allergist": Allergist,
+    "hepatologist": hepatologist,
+    "nephrologist": nephrologist,
+    "orthopedist": orthopedist,
+    "allergist": allergist,
 }
 
 patient_reviews = [
@@ -179,29 +179,24 @@ class Patientop(View):
         if "payment" in req.POST:
             if pdisease in cardiology:
                 doc_info = Doctors.objects.get(doc_spe="cardiology")
-                Patients.objects.create(
-                    pat_name=pname,
-                    pat_age=page,
-                    pat_gender=pgender,
-                    pat_address=paddress,
-                    pat_mobile=pmobile,
-                    pat_problem=pdisease,
-                    doctor_id=doc_info,
-                )
             elif pdisease in neurology:
                 doc_info = Doctors.objects.get(doc_spe="neurology")
-                Patients.objects.create(
-                    pat_name=pname,
-                    pat_age=page,
-                    pat_gender=pgender,
-                    pat_address=paddress,
-                    pat_mobile=pmobile,
-                    pat_problem=pdisease,
-                    doctor_id=doc_info,
-                )
             elif pdisease in dermatology:
                 doc_info = Doctors.objects.get(doc_spe="dermatology")
-                Patients.objects.create(
+            elif pdisease in ophthalmologist:
+                doc_info = Doctors.objects.get(doc_spe = 'ophthalmologist')
+            elif pdisease in gastroenterologist:
+                doc_info = Doctors.objects.get(doc_spe = 'gastroenterologist')
+            elif pdisease in hepatologist:
+                doc_info = Doctors.objects.get(doc_spe = 'hepatologist') 
+            elif pdisease in nephrologist:
+                doc_info = Doctors.objects.get(doc_spe = 'nephrologist')
+            elif pdisease in orthopedist:
+                doc_info = Doctors.objects.get(doc_spe = 'orthopedist')
+            elif pdisease in allergist:
+                doc_info = Doctors.objects.get(doc_spe = 'allergist')
+                
+            Patients.objects.create(
                     pat_name=pname,
                     pat_age=page,
                     pat_gender=pgender,
@@ -210,6 +205,7 @@ class Patientop(View):
                     pat_problem=pdisease,
                     doctor_id=doc_info,
                 )
+                
 
         return redirect("patientopurl")
 
