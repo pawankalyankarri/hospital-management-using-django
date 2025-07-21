@@ -326,22 +326,25 @@ class DoctorSlots(View):
         slot_time = datetime.strptime(slot_time_str,'%I:%M %p').time()
 
         disease_type = req.POST['disease']
+        #Doc_slots.objects.create(doc_id = pk)
         res = Doc_slots.objects.filter(doc_id = pk).first()
+        print(res)
+        if not res:
+            Doc_slots.objects.create(doc_id = pk)
+            res = Doc_slots.objects.filter(doc_id = pk).first()
         # print(res.slot1)
         for i in range(1,16):
             slot_no = f'slot{i}'
             slotTime = getattr(res,slot_no)
             
             if slotTime == slot_time:
-                print(slot_no)
+                # print(slot_no)
+                break
                 
         slots_table = SlotsAppointments.objects.filter(doc_id = pk).first()
         setattr(slots_table, slot_no, "booked")
         slots_table.save()
         print(slots_table)
                 
-        #SlotsAppointments(slot_no = 'booked').save()
-        # Doc_slots.objects.create(slot)
-        # print(req.POST['slot'])
         return redirect('patientopurl')
         
