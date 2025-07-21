@@ -2,48 +2,67 @@
 <link rel="stylesheet" href="{% static 'css/home/doc_slots.css'%}" />
 {%endblock%} {%block body%}
 <div class="container doc_slots mt-3">
-  <section class="left card shadow">
-    <div>
-      <img
-        src="{{doc.doc_img.url}}"
-        width="300px"
-        alt=""
-        class="card-img-top"
-      />
-      <div class="m-2">
-        <h3 class="text-capitalize text-center">Dr. {{doc.doc_name}}</h3>
-        <h5 class="text-capitalize text-center">{{doc.doc_spe}}</h5>
-        <h6 class="text-center">Select your disease type</h6>
-        <div class="dis_list">
-        {%for disease,dis_list in all_diseases.items%}
-                {%if doc.doc_spe == disease%} 
-                    {%for dis in dis_list%}
-                        <a href="" class="btn btn-outline-success text-capitalize">{{dis}}</a>
-                    {%endfor%} 
-                {%endif%}
-        {%endfor%}
+  <form action="" class="form" method="post" >
+    {%csrf_token%}
+    <section class="left card shadow">
+      <div class="div">
+        <img
+          src="{{doc.doc_img.url}}"
+          width="300px"
+          alt=""
+          class="img"/>
+
+        <div class="m-2">
+          <h3 class="text-capitalize text-center">Dr. {{doc.doc_name}}</h3>
+          <h5 class="text-capitalize text-center">{{doc.doc_spe}}</h5>
+          <h6 class="text-center">Select your disease type</h6>
+          <div class="dis_list">
+            <input type="hidden" name="disease" id="dis_input">
+            {%for disease,dis_list in all_diseases.items%}
+              {%if doc.doc_spe == disease%} 
+                {%for dis in dis_list%}
+                 
+                  <a
+                  href=""
+                  class="btn btn-outline-info text-capitalize disease"
+                  onclick="validateDisease(event)"
+                  
+                  >{{dis}}</a>
+            
+                {%endfor%}
+              {%endif%} 
+            {%endfor%}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="text-capitalize right">
-    <div class="w-50">
-      <label for="" class="form-label">select date</label>
+    </section>
+    <section class="text-capitalize right">
+      <div class="w-50">
+        <label for="" class="form-label">select date</label>
 
-      <input
-        type="date"
-        min="{{ date.min|date:'Y-m-d' }}"
-        max="{{ date.max|date:'Y-m-d' }}"
-        class="form-control"
-      />
-    </div>
-    <div class="slots">
-      {%for slot in slots%}
-      <span class="btn btn-outline-primary">{{slot}}</span>
+        <input
+          type="date"
+          min="{{ date.min|date:'Y-m-d' }}"
+          max="{{ date.max|date:'Y-m-d' }}"
+          class="form-control"
+        />
+      </div>
+      <div class="slots">
+        <input type="hidden" name="slot" id="slot_input">
+        {%for slot in slots%}
+        <a href="" onclick="validateDate(event)"  class="btn btn-outline-primary slot">{{slot}}</a>
 
-      {%endfor%}
-    </div>
-  </section>
+        {%endfor%}
+      </div>
+      <div>
+        <input type="submit" value="Book Appointment" class="btn btn-success">
+      </div>
+    </section>
+    
+  </form>
 </div>
 
+{%endblock%}
+{%block scripts%}
+<script src="{% static 'js/doc_slots.js' %}"></script>
 {%endblock%}

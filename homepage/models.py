@@ -42,6 +42,25 @@ class Doc_slots(models.Model):
         return self.doc_id.doc_spe
     
     
+class SlotsAppointments(models.Model):
+    doc_id = models.ForeignKey(Doctors,on_delete=models.SET_NULL,null=True)
+    slot1 = models.TextField(default='')
+    slot2 = models.TextField(default='')
+    slot3 = models.TextField(default='')
+    slot4 = models.TextField(default='')
+    slot5 = models.TextField(default='')
+    slot6 = models.TextField(default='')
+    slot7 = models.TextField(default='')
+    slot8 = models.TextField(default='')
+    slot9 = models.TextField(default='')
+    slot10 = models.TextField(default='')
+    slot11 = models.TextField(default='')
+    slot12 = models.TextField(default='')
+    slot13 = models.TextField(default='')
+    slot14 = models.TextField(default='')
+    slot15 = models.TextField(default='')
+    
+    
     
     
 class Patients(models.Model):
