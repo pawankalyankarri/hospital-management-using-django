@@ -324,11 +324,13 @@ class DoctorSlots(View):
         # print(pk)
         slot_time_str = req.POST['slot']
         slot_time = datetime.strptime(slot_time_str,'%I:%M %p').time()
+        date_str = req.POST['date']
+        slot_date = datetime.strptime(date_str,'%Y-%m-%d').date()
 
         disease_type = req.POST['disease']
         #Doc_slots.objects.create(doc_id = pk)
         res = Doc_slots.objects.filter(doc_id = pk).first()
-        print(res)
+        
         if not res:
             Doc_slots.objects.create(doc_id = pk)
             res = Doc_slots.objects.filter(doc_id = pk).first()
@@ -338,13 +340,24 @@ class DoctorSlots(View):
             slotTime = getattr(res,slot_no)
             
             if slotTime == slot_time:
-                # print(slot_no)
                 break
                 
         slots_table = SlotsAppointments.objects.filter(doc_id = pk).first()
+        slot_date_check = SlotsAppointments.objects.filter(slot_date = slot_date)
+        #here i am checking wheathere there is not date in slots table then i am creating new record with new date
+        if not(slot_date_check): 
+            doc_details = Doctors.objects.get(doc_id = pk)
+            SlotsAppointments.objects.create(doc_id = doc_details,slot_date = slot_date)
+            slot_date_check = SlotsAppointments.objects.filter(slot_date = slot_date)
+            slots_table = SlotsAppointments.objects.filter(doc_id = pk).first()
+
+        
+        
         setattr(slots_table, slot_no, "booked")
+        setattr(slots_table,'slot_date', date_str)
         slots_table.save()
-        print(slots_table)
+        
+        
                 
         return redirect('patientopurl')
         

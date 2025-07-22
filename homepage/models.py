@@ -44,6 +44,7 @@ class Doc_slots(models.Model):
     
 class SlotsAppointments(models.Model):
     doc_id = models.ForeignKey(Doctors,on_delete=models.SET_NULL,null=True)
+    slot_date = models.DateField(null=True)
     slot1 = models.TextField(default='')
     slot2 = models.TextField(default='')
     slot3 = models.TextField(default='')
