@@ -329,34 +329,120 @@ class DoctorSlots(View):
 
         disease_type = req.POST['disease']
         #Doc_slots.objects.create(doc_id = pk)
-        res = Doc_slots.objects.filter(doc_id = pk).first()
+        # here it for doctors object to assign foreign key values
+        doc_details = Doctors.objects.get(doc_id = pk)
+        docslots_details = Doc_slots.objects.get(doc_id = pk)
         
-        if not res:
-            Doc_slots.objects.create(doc_id = pk)
-            res = Doc_slots.objects.filter(doc_id = pk).first()
-        # print(res.slot1)
+        
+        
+        
+        
+        
+        print(req.POST)
+        print('if before ',docslots_details)
+        if not docslots_details:
+            # Doc_slots.objects.create(doc_id = pk)
+            # docslots_details = Doc_slots.objects.filter(doc_id = pk).first()
+            print('doctor dont have slots you need to develop it')
+        # print(docslots_details.slot1)
+        print(docslots_details)
         for i in range(1,16):
-            slot_no = f'slot{i}'
-            slotTime = getattr(res,slot_no)
-            
+            slot_no = f'slot{i}' # slot_no means slot1,slot2...etc
+            slotTime = getattr(docslots_details,slot_no)
             if slotTime == slot_time:
                 break
                 
-        slots_table = SlotsAppointments.objects.filter(doc_id = pk).first()
-        slot_date_check = SlotsAppointments.objects.filter(slot_date = slot_date)
-        #here i am checking wheathere there is not date in slots table then i am creating new record with new date
-        if not(slot_date_check): 
-            doc_details = Doctors.objects.get(doc_id = pk)
+        slots_table_ddetails = SlotsAppointments.objects.filter(doc_id = pk)
+        print('slotno',slot_no)
+        print(slots_table_ddetails)
+        if not(slots_table_ddetails):
+            # here doctor don't have slots in slotsappointments table so we need to create that
             SlotsAppointments.objects.create(doc_id = doc_details,slot_date = slot_date)
-            slot_date_check = SlotsAppointments.objects.filter(slot_date = slot_date)
-            slots_table = SlotsAppointments.objects.filter(doc_id = pk).first()
-
+            slots_table_ddetails = SlotsAppointments.objects.filter(doc_id = pk)
+            print('doctor slots created')
+        print('slots_table_ddetals',slots_table_ddetails)
         
+        for i in slots_table_ddetails:
+            # here if date is matched to user selected date then i check for slotno
+            if i.slot_date == slot_date:
+                print('date matched')
+                print(i.slot_date)
+                # here if the slot is not booked then only book slot 
+                if getattr(i,slot_no) == 'booked':
+                    print('it is already booked')
+                    print('breaking')
+                    #return render(req,'message.html',{'url':'appointmenturl+{pk}','msg':'already Booked Choose another time'})
+                    # return redirect('doc_slots/{pk}')
+                    return redirect(f'/doc_slots/{pk}/')
+                else:
+                    setattr(i,slot_no,'booked') # here i am booking slot 
+                    i.save()    # here iam saving it
+                    print('now booking')
+                    print('breaking')
+                    return HttpResponse('appointment booked')
+            else:
+                print('slots_table_ddetail date is not matched')
+            
+            
+            
+        # # matched_date = getattr(slots_table_ddetails,)
+        # slot_date_check = SlotsAppointments.objects.filter(slot_date = slot_date)
+        # #here i am checking wheathere there is not date in slots table then i am creating new record with new date
+        # if not(slot_date_check): 
+        #     doc_details = Doctors.objects.get(doc_id = pk)
+        #     SlotsAppointments.objects.create(doc_id = doc_details,slot_date = slot_date)
+        #     slot_date_check = SlotsAppointments.objects.filter(slot_date = slot_date)
+        #     slots_table_ddetails = SlotsAppointments.objects.filter(doc_id = pk)
+            
+            
+            
+        # print('for loop')
+        # slot_date_flag = True
+        # book_flag = True
+        # for i in slots_table_ddetails:
+        #     if i.slot_date == slot_date:
+        #         slot_date_flag = False
+        #         print(slot_date,'date is mathched')
+        #         if getattr(i,slot_no) != 'booked':
+        #             book_flag = False
+        #             print('not booked')
+        #             setattr(i,slot_no,'booked')
+                    
+        #         else:
+        #             print('booked')
+                    
+            
+        #if slot_date_flag:
+                   
+                
+                
+                
+                
+                
+                
+                
+        # if not(slots_table_ddetails):
+        #     SlotsAppointments.objects.create()
         
-        setattr(slots_table, slot_no, "booked")
-        setattr(slots_table,'slot_date', date_str)
-        slots_table.save()
+        # print(req.POST)
         
+        # print('slot detals',slots_table_ddetails.slot_date)
+        # print('slot date check',slot_date_check)
+        # if slots_table_ddetails.slot_date == slot_date:
+        #     print('slot_date matched')
+        #     if getattr(slots_table_ddetails,slot_no) != 'booked':
+        #         setattr(slots_table_ddetails, slot_no, "booked")
+        #         print('booking sucess')
+        #     else:
+        #         print('already booked')
+        # else:
+        #     setattr(slots_table_ddetails,'slot_date', date_str)
+        #     setattr(slots_table_ddetails, slot_no, "booked")
+        # slots_table_ddetails.save()
+        
+        # print(slot_date)
+        # print(date_str)
+        # print(slot_no)
         
                 
         return redirect('patientopurl')
