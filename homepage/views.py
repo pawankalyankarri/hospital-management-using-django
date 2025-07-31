@@ -79,9 +79,9 @@ orthopedist = [
     "Arthritis",
     "Fractures",
     "Bursitis",
+    "Hip Fracture",
     "Low Back Pain",
     "Foot Pain and Problems",
-    "Hip Fracture",
     "Hand Pain and Problems",
     "Knee Pain and Problems",
     "Neck Pain and Problems",
@@ -279,7 +279,7 @@ class AddDoctor(View):
         SlotsAppointments.objects.create(doc_id = doc_details)
        
         
-        return redirect("adddoctorurl")
+        return redirect("homeurl")
 
 
 class Appointments(View):
