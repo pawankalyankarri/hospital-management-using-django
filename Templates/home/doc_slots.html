@@ -4,13 +4,13 @@
 <div class="container doc_slots mt-3">
   <form action="" class="form" method="post" >
     {%csrf_token%}
-    <section class="left card shadow">
+    <section class="left left_sec card shadow">
       <div class="div">
         <img
           src="{{doc.doc_img.url}}"
-          width="300px"
+          
           alt=""
-          class="img"/>
+          class="doctor_img"/>
 
         <div class="m-2">
           <h3 class="text-capitalize text-center">Dr. {{doc.doc_name}}</h3>
