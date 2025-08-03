@@ -64,6 +64,10 @@ class SlotsAppointments(models.Model):
     slot15 = models.TextField(default='')
     
     
+    def __str__(self):
+        return f'{self.doc_id},{self.slot_date}'
+    
+    
     
     
 class Patients(models.Model):

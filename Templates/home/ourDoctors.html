@@ -9,7 +9,7 @@
       <h4>Dr. {{doc.doc_name}}</h4>
       <h6 >{{doc.doc_spe}}</h6>
 
-      <a href="" class="btn btn-outline-primary">Book Appointment</a>
+      <a href="{%url 'doctorslotsurl' doc.doc_id %}" class="btn btn-outline-primary">Book Appointment</a>
     </div>
   </div>
   {%endfor%}

@@ -7,6 +7,7 @@ urlpatterns = [
     path('doctor/',views.AddDoctor.as_view(),name='adddoctorurl'),
     path('appointment/',views.Appointments.as_view(),name='appointmenturl'),
     path('ourdoctors/',views.OurDoctors.as_view(),name='ourdoctorsurl'),
-    path('doc_slots/<int:pk>/',views.DoctorSlots.as_view(),name='doctorslotsurl')
+    path('doc_slots/<int:pk>/',views.DoctorSlots.as_view(),name='doctorslotsurl'),
+
     
 ]

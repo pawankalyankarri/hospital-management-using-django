@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {%load static %} 
+{%block styles%}
+    <link rel="stylesheet" href="{% static 'css/messages/apsuccess.css' %}">
+{%endblock%}
+{% block body%}
+<div class="apsuccess">
+  <div>
+    <img src="{% static 'images/apcalender1.jpg' %}" alt="" />
+  </div>
+  <div>
+    <p>success fully booked</p>
+    <p>{{s_date}} => sdate</p>
+    <p>{{d_name}} =>dname</p>
+    <p>{{slot_no}} =>slot no</p>
+    <p>{{slot}} =>slot</p>
+  </div>
+</div>
+
+{%endblock%}
