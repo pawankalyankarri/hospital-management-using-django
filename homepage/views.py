@@ -355,6 +355,7 @@ class DoctorSlots(View):
         slots_table_ddetails = SlotsAppointments.objects.filter(doc_id = pk)
         print('slotno',slot_no)
         print(slots_table_ddetails)
+        print('slot_date',slot_date)
         if not(slots_table_ddetails):
             # here doctor don't have slots in slotsappointments table so we need to create that
             SlotsAppointments.objects.create(doc_id = doc_details,slot_date = slot_date)
@@ -363,7 +364,8 @@ class DoctorSlots(View):
         print('slots_table_ddetals',slots_table_ddetails)
         
         for i in slots_table_ddetails:
-            # here if date is matched to user selected date then i check for slotno
+            # here if date is matched to user selected date then i check for slotno            
+            print('i',i)
             if i.slot_date == slot_date:
                 print('date matched')
                 print(i.slot_date)
@@ -379,8 +381,15 @@ class DoctorSlots(View):
                     i.save()    # here iam saving it
                     print('now booking')
                     print('breaking')
-                    return HttpResponse('appointment booked')
+                    print('i',i)
+                    dn = i.doc_id
+                    dt = i.slot_date
+                    print('slot_no',slot_no)
+                    return render(req,'messages/apsuccess.html',{'s_date':dt,'d_name':dn,'slot_no':slot_no,'slot':slotTime})
+                    #return HttpResponse('success')
             else:
+                # print(i.slot_date)
+                # print(slot_date)
                 print('slots_table_ddetail date is not matched')
             
             
