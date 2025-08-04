@@ -1,7 +1,49 @@
 .apsuccess{
     display: flex;
-    flex-direction: column;
-    background-color: black;
-    color:whitesmoke
+    background-color: white;
+    color: black;
+    width: 100vw;
+    height: 100vh;
+    gap:2%
 
+}
+.apsuccess .left{
+    width: 49%;
+    height: 100% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.apsuccess .left img{
+    width: 80%;
+    height: 80%;
+}
+.apsuccess .right{
+    width: 49%;
+    height: 50%;
+    
+    
+}
+.apsuccess .right .calender{
+    display: flex;
+    justify-content: center;
+}
+.apsuccess .right .calender img{
+    margin-top: 5%;
+    width: 50%;
+    height: 15%;
+
+}
+.apsuccess .right .details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5%;
+    padding:1%;
+
+}
+.apsuccess .right .details h5{
+    padding: 1.5%;
 }
