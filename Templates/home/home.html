@@ -1,10 +1,10 @@
 {%extends 'base.html'%} {%block styles%} {%load static%}
 <link rel="stylesheet" href="{%static 'css/home/home.css'%}" />
 {%endblock%} {%block body%}
-<header class="container-fluid ">
+<header class="container-fluid">
   <ul class="nav navbar d-flex justify-content-around head_ul">
     <li class="nav-item">
-      <img src="{%static 'images/hospitallogo7.webp'%}" alt="">
+      <img src="{%static 'images/hospitallogo7.webp'%}" alt="" />
     </li>
     <li class="nav-item icons">
       <i class="fa-brands fa-facebook-f"></i>
@@ -24,7 +24,6 @@
       </svg>
       <i class="bi bi-instagram"></i>
       <i class="bi bi-linkedin"></i>
-      
     </li>
     <li class="nav-item d-flex gap-4 p-2 call">
       <i class="fa-solid fa-phone ms-3"></i>
@@ -47,7 +46,9 @@
     <li class="nav-item">
       <a href="{%url 'appointmenturl'%}">Appointments</a>
     </li>
-    <li class="nav-item"><a href="{% url 'ourdoctorsurl' %}">Our Doctors</a></li>
+    <li class="nav-item">
+      <a href="{% url 'ourdoctorsurl' %}">Our Doctors</a>
+    </li>
     <li class="nav-item"><a href="{%url 'adddoctorurl'%}">doctors</a></li>
     <li class="nav-item"><a href="">our team</a></li>
   </ul>
@@ -56,8 +57,9 @@
   <ul>
     <li class="nav-item">
       <i class="fa-regular fa-calendar-check"></i><br />
-        <a href="http://127.0.0.1:8000/appointment"><span>Book An Appointment</span></a>
-      
+      <a href="http://127.0.0.1:8000/appointment"
+        ><span>Book An Appointment</span></a
+      >
     </li>
     <li class="nav-item">
       <i class="fa-solid fa-comment-dots"></i> <br /><span>Text Us</span>
@@ -77,27 +79,31 @@
     <li>
       <div><i class="fa-solid fa-user-doctor"></i></div>
       <div>
-        <span>100+</span><br>
+        <span>100+</span><br />
         <span>Doctors</span>
       </div>
     </li>
     <li>
       <div><i class="fa-solid fa-thumbs-up"></i></div>
       <div>
-        <span>20000+</span><br>
+        <span>20000+</span><br />
         <span>Surgeries</span>
       </div>
     </li>
-    <li><div><i class="fa-solid fa-bed"></i></div>
+    <li>
+      <div><i class="fa-solid fa-bed"></i></div>
       <div>
-        <span>150+</span><br>
+        <span>150+</span><br />
         <span>Beds</span>
-      </div></li>
-    <li><div><i class="fa-solid fa-user"></i></div>
+      </div>
+    </li>
+    <li>
+      <div><i class="fa-solid fa-user"></i></div>
       <div>
-        <span>10 Lakhs+</span><br>
+        <span>10 Lakhs+</span><br />
         <span>Happy Patients</span>
-      </div></li>
+      </div>
+    </li>
   </ul>
 </section>
 <section class="spe_list container mt-5 mb-5 container-fluid">
@@ -127,7 +133,7 @@
         <img
           src="{%static 'images/'%}{{doc.img}}"
           alt=""
-          class="card-img-top "
+          class="card-img-top"
         />
       </div>
     </li>
@@ -236,7 +242,6 @@
         frameborder="0"
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-        
       >
       </iframe>
 
@@ -247,6 +252,7 @@
     {%endfor%}
   </div>
 </section>
+
 <section class="container text-capitalize">
   <div class="row col-12 add-cont">
     <div class="p-5">
@@ -274,12 +280,26 @@
         <li class="ms-5 fs-5">9:00 AM - 5:00 PM</li>
       </ul>
     </div>
+    <div class="col-6">
+      <form action="" class="right_userinfo">
+        <div class="mt-4">
+          <input type="text" placeholder="Name" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="email" placeholder="email" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="tel" placeholder="Phone number" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+      </form>
+    </div>
   </div>
 </section>
-<section class="addright">
-    <form action="">
-      <div>
-        <input type="text" placeholder="Name" class="form-control"></div>
-    </form>
-</section>
+
 {%endblock%}
