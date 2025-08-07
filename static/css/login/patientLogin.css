@@ -6,11 +6,32 @@
    place-items: center;
    
 } */
+.patient_form {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
 .patient_form form {
    
    position: absolute;
    top: 50%;
    left: 50%;
    transform: translate(-50%,-50%);
+   opacity: 1;
+   z-index: 3;
    
+}
+/* .patient_form .doc_caring{
+   width: 100vw;
+   height: 100vh;
+
+} */
+.patient_form .doc_caring img{
+   width: 100%;
+   height: 90%;
+
+   object-fit: cover;
+
 }

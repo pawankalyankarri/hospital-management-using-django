@@ -121,8 +121,13 @@
     height: 50vh;
 }
 /* contact and address */
+/* .add_userinfo{
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+} */
 .address{
-    width: 40vw;
+    /* width: 40vw; */
     color:black;
     border: 2px solid black;
     margin-bottom: 5%;
@@ -177,3 +182,6 @@
     width: 100vw;
 }
 
+/* .right_userinfo{
+    width: 40vw;
+} */

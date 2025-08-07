@@ -3,6 +3,7 @@ from django.views import View
 from .models import Doctors, Patients, Doc_slots, SlotsAppointments
 from datetime import datetime, timedelta, date
 from django.http import HttpResponse
+import random
 
 
 # Create your views here.
@@ -174,25 +175,48 @@ class Patientop(View):
         paddress = req.POST["address"]
         pdisease = req.POST["disease"]
         pmobile = req.POST["mobile"]
+        #if pdisease not in all_diseases:
+            
         if "payment" in req.POST:
+            def find_doctor(doc_spe):
+                docs_list = Doctors.objects.filter(doc_spe="cardiology") 
+                randomNum = random.randint(0,len(docs_list)-1)
+                print('x value', randomNum)
+                
+                doc_info = docs_list[randomNum]
+                return doc_info
+            
             if pdisease in cardiology:
-                doc_info = Doctors.objects.get(doc_spe="cardiology")
+                # docs_list = Doctors.objects.filter(doc_spe="cardiology") 
+                # randomNum = random.randint(0,len(docs_list)-1)
+                # print('x value', randomNum)
+                
+                # doc_info = docs_list[randomNum]
+                doc_info = find_doctor("cardiology")
             elif pdisease in neurology:
-                doc_info = Doctors.objects.get(doc_spe="neurology")
+                # doc_info = Doctors.objects.get(doc_spe="neurology")
+                doc_info = find_doctor("neurology")
             elif pdisease in dermatology:
-                doc_info = Doctors.objects.get(doc_spe="dermatology")
+                # doc_info = Doctors.objects.get(doc_spe="dermatology")
+                doc_info = find_doctor("dermatology")
             elif pdisease in ophthalmologist:
-                doc_info = Doctors.objects.get(doc_spe="ophthalmologist")
+                # doc_info = Doctors.objects.get(doc_spe="ophthalmologist")
+                doc_info = find_doctor("ophthalmologist")
             elif pdisease in gastroenterologist:
-                doc_info = Doctors.objects.get(doc_spe="gastroenterologist")
+                # doc_info = Doctors.objects.get(doc_spe="gastroenterologist")
+                doc_info = find_doctor("gastroenterologist")
             elif pdisease in hepatologist:
-                doc_info = Doctors.objects.get(doc_spe="hepatologist")
+                # doc_info = Doctors.objects.get(doc_spe="hepatologist")
+                doc_info = find_doctor("hepatologist")
             elif pdisease in nephrologist:
-                doc_info = Doctors.objects.get(doc_spe="nephrologist")
+                # doc_info = Doctors.objects.get(doc_spe="nephrologist")
+                doc_info = find_doctor("nephrologist")
             elif pdisease in orthopedist:
-                doc_info = Doctors.objects.get(doc_spe="orthopedist")
+                # doc_info = Doctors.objects.get(doc_spe="orthopedist")
+                doc_info = find_doctor("orthopedist")
             elif pdisease in allergist:
-                doc_info = Doctors.objects.get(doc_spe="allergist")
+                # doc_info = Doctors.objects.get(doc_spe="allergist")
+                doc_info = find_doctor("allergist")
 
             Patients.objects.create(
                 pat_name=pname,

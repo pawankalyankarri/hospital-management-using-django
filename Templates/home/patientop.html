@@ -40,8 +40,8 @@
   <div class=" col-5  mt-1 mb-2">
     <!-- <label for="p_disease" class="form-label">disease</label
     ><input type="text" id="p_disease" class="form-control" name="desease" /> -->
-    <label for="" class="form-label">Choose your disease</label>
-    <input type="text" list="diseases" name="disease" class="form-control" placeholder="Disease" required>
+    <label for="dis" class="form-label">Choose your disease</label>
+    <input type="text" list="diseases" id="dis" name="disease" class="form-control" placeholder="Disease" required>
     <datalist id="diseases">
       {%for doc,diseases in all_diseases.items%}
          {%for disease in diseases%}
@@ -57,12 +57,16 @@
   </div>
   <div class=" col-5  mt-2">
     <input type="checkbox" id="payment" class="form-check-input" name="payment" required />
-    <label for="payment" class="form-check-label" >payment</label
+    <label for="payment" class="form-check-label"  >payment</label
     >
   </div>
   <div class="col-5 mt-1"><input type="submit" class="btn btn-primary" value="Generate op"></div>
   </div>
-</form></div>
+</form>
+<div class="doc_caring">
+  <img src="{% static 'images/doccaring1.jpg' %}" alt="">
+</div>
+</div>
 {%endblock%}
 {%block scripts%}
   <script src="{% static 'js/patientop.js' %}"></script>
