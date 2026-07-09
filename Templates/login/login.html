@@ -1,0 +1,23 @@
+{%extends 'base.html'%} {%block body%}
+{%block styles%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'css/login/login.css'%}">
+{%endblock%}
+<main class="container  ">
+
+  <form action="" class="row-12  l_form " method="post">
+    {%csrf_token%}
+   <div class=" col-6  l_div">
+     <div class="w-75 mt-3">
+      <label for="un">User Name</label
+      ><input type="text" id="un" name="username" class="form-control" />
+    </div>
+    <div class="w-75 mt-3">
+      <label for="psw">Password</label
+      ><input type="password" id="psw" name="password" class="form-control" />
+    </div>
+    <div class="w-75 mt-3"><input type="submit" class=" btn btn-success w-100" value="Login"></div>
+   </div>
+  </form>
+</main>
+{%endblock%}

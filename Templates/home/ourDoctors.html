@@ -1,0 +1,17 @@
+{%extends 'base.html'%} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'css/home/ourDoctors.css' %}" />
+{% endblock %} {% block body%}
+<main class="container doctors">
+  {% for doc in docs%}
+  <div class="card">
+    <img src="{{doc.doc_img.url}}" class="card-img-top" alt="" />
+    <div class="card-body">
+      <h4>Dr. {{doc.doc_name}}</h4>
+      <h6 >{{doc.doc_spe}}</h6>
+
+      <a href="{%url 'doctorslotsurl' doc.doc_id %}" class="btn btn-outline-primary">Book Appointment</a>
+    </div>
+  </div>
+  {%endfor%}
+</main>
+{%endblock%}

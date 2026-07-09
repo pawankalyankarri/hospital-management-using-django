@@ -1,0 +1,305 @@
+{%extends 'base.html'%} {%block styles%} {%load static%}
+<link rel="stylesheet" href="{%static 'css/home/home.css'%}" />
+{%endblock%} {%block body%}
+<header class="container-fluid">
+  <ul class="nav navbar d-flex justify-content-around head_ul">
+    <li class="nav-item">
+      <img src="{%static 'images/hospitallogo7.webp'%}" alt="" />
+    </li>
+    <li class="nav-item icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="bi bi-whatsapp"></i>
+      <!-- twitter svg file -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-twitter-x"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+        />
+      </svg>
+      <i class="bi bi-instagram"></i>
+      <i class="bi bi-linkedin"></i>
+    </li>
+    <li class="nav-item d-flex gap-4 p-2 call">
+      <i class="fa-solid fa-phone ms-3"></i>
+      <div class="text-decoration-none">
+        <a href="">Book Appointments</a><br />
+        <a href="">1234567890</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="{%url 'loginurl'%}" class="btn btn-outline-success"
+        >Employee Login</a
+      >
+    </li>
+  </ul>
+</header>
+<nav class="container-fluid loginlinks">
+  <ul class="nav navbar d-flex justify-content-around nav_ul">
+    <li class="nav-item"><a href="">HOME</a></li>
+    <li class="nav-item"><a href="{%url 'patientopurl'%}">Patient op</a></li>
+    <li class="nav-item">
+      <a href="{%url 'appointmenturl'%}">Appointments</a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'ourdoctorsurl' %}">Our Doctors</a>
+    </li>
+    <li class="nav-item"><a href="{%url 'adddoctorurl'%}">doctors</a></li>
+    <li class="nav-item"><a href="">our team</a></li>
+  </ul>
+</nav>
+<section class="sidebar list-unstyled">
+  <ul>
+    <li class="nav-item">
+      <i class="fa-regular fa-calendar-check"></i><br />
+      <a href="http://127.0.0.1:8000/appointment"
+        ><span>Book An Appointment</span></a
+      >
+    </li>
+    <li class="nav-item">
+      <i class="fa-solid fa-comment-dots"></i> <br /><span>Text Us</span>
+    </li>
+  </ul>
+</section>
+<section class="promotions row">
+  <video autoplay muted class="col-12 h-50">
+    <source
+      src="{% static 'images/hospitalpromotion.mp4' %}"
+      type="video/mp4"
+    />
+  </video>
+</section>
+<section class="have">
+  <ul class="nav d-flex justify-content-around reviews">
+    <li>
+      <div><i class="fa-solid fa-user-doctor"></i></div>
+      <div>
+        <span>100+</span><br />
+        <span>Doctors</span>
+      </div>
+    </li>
+    <li>
+      <div><i class="fa-solid fa-thumbs-up"></i></div>
+      <div>
+        <span>20000+</span><br />
+        <span>Surgeries</span>
+      </div>
+    </li>
+    <li>
+      <div><i class="fa-solid fa-bed"></i></div>
+      <div>
+        <span>150+</span><br />
+        <span>Beds</span>
+      </div>
+    </li>
+    <li>
+      <div><i class="fa-solid fa-user"></i></div>
+      <div>
+        <span>10 Lakhs+</span><br />
+        <span>Happy Patients</span>
+      </div>
+    </li>
+  </ul>
+</section>
+<section class="spe_list container mt-5 mb-5 container-fluid">
+  <h3 class="m-4">Centers of Excellence</h3>
+  <ul class="nav provides d-flex flex-row container gap-4">
+    {%for img in images%}
+    <li class="">
+      <div class="provide card shadow" style="max-width: 12rem; height: 18rem">
+        <img
+          src="{%static 'images/'%}{{img.img}}"
+          class="card-img-top"
+          alt=""
+        />
+        <div class="card-body d-flex align-items-end">
+          <p class="card-text">{{img.text}}</p>
+        </div>
+      </div>
+    </li>
+    {%endfor%}
+  </ul>
+</section>
+<section class="doc_img_sec container-fluid">
+  <ul class="nav d-flex justify-content-around">
+    {%for doc in doc_names%}
+    <li class="li-item">
+      <div class="card">
+        <img
+          src="{%static 'images/'%}{{doc.img}}"
+          alt=""
+          class="card-img-top"
+        />
+      </div>
+    </li>
+    {%endfor%}
+  </ul>
+</section>
+
+<section class="container-fluid mb-5">
+  <h3 class="text-center text-capitalize m-4">our values</h3>
+  <div
+    style="grid-template-columns: 1fr 1fr 1fr"
+    class="d-grid gap-2 column-gap-1"
+  >
+    <div class="card p-2 shadow">
+      <h4 class="card-text text-start ms-5">Expertise</h4>
+      <div class="card-body">
+        <p class="card-text">
+          All our doctors, nurses and non-medical staff are committed to being
+          the most skilled and knowledgeable in their respective fields. We
+          invest in the most advanced and innovative treatments.
+        </p>
+      </div>
+    </div>
+    <div class="card p-2 shadow">
+      <h4 class="card-text text-start ms-5">Excellence</h4>
+      <div class="card-body">
+        <p class="card-text">
+          We strive for excellence in every aspect of your experience right from
+          providing state of the art facilities, compassionate guidance, highest
+          quality care to exceptional medical outcomes.
+        </p>
+      </div>
+    </div>
+    <div class="card p-2 shadow">
+      <h4 class="card-text text-start ms-5">Empathy</h4>
+      <div class="card-body">
+        <p class="card-text">
+          Patients are more than a medical case - they are individuals with
+          unique needs and concerns. We foster a culture of empathy among our
+          staff, ensuring that you all feel heard, understood and supported.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container p-2">
+  <h3 class="fw-bolder m-3">About Our Hospitals</h3>
+  <p class="fw-medium m-2">
+    We are proud to be an institution with a tradition of high standards of team
+    excellence in patient-centered care, teaching, and research. As the best
+    multispeciality hospital in Hyderabad, we bring together a dedicated team of
+    expert physicians, nurses, and other healthcare professionals to provide the
+    highest standards of medical treatment. Our multidisciplinary services offer
+    extensive and state-of-the-art medical care. Our full range of primary and
+    specialty healthcare services enables cross-specialty consultation, which
+    assures comprehensive treatment for each patient.
+  </p>
+  <div>
+    <a href="" class="btn btn-outline-primary m-5 fw-bold">Know more</a>
+  </div>
+</section>
+<section class="container card shadow mb-5">
+  <div class="row col-12">
+    <div class="d-flex p-3 col-6">
+      <div class="mt-5">
+        <img src="{% static 'images/rating.jpg' %}" alt="" width="400px" />
+      </div>
+      <div class="p-4">
+        <span class="display-3 fw-bold">4.7</span><br />
+        <span class="fw-bolder fs-4">Excellent Care</span>
+        <p class="mt-2">
+          "I had an amazing experience at the hospital. The doctors were
+          professional, the nursing staff was very supportive, and the entire
+          process was smooth and well-organized. The rooms were clean and
+          hygienic. I felt safe and cared for. Highly recommend!"
+        </p>
+      </div>
+    </div>
+    <div class="d-flex p-3 col-6">
+      <div class="mt-5">
+        <img src="{% static 'images/rating.jpg' %}" alt="" width="400px" />
+      </div>
+      <div class="p-4">
+        <span class="display-3 fw-bold">4.9</span><br />
+        <span class="fw-bolder fs-4">Outstanding Service</span>
+        <p class="mt-2">
+          "The hospital exceeded my expectations in every way. From the moment I
+          entered, the staff was courteous and attentive. The doctors explained
+          everything clearly and treated me with great care. Clean environment,
+          timely service, and excellent medical facilities. I’m truly grateful
+          for the treatment I received!"
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container">
+  <div class="p-5">
+    <h3 class="text-center fw-bold fs-3">Patient Experience</h3>
+  </div>
+  <div class="d-flex row col-12">
+    {%for pat_rev in reviews%}
+    <div class="col-4">
+      <iframe
+        src="{{pat_rev.src}}"
+        frameborder="0"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+
+      <p>{{pat_rev.name}}</p>
+      <p>{{pat_rev.review}}</p>
+    </div>
+
+    {%endfor%}
+  </div>
+</section>
+
+<section class="container text-capitalize">
+  <div class="row col-12 add-cont">
+    <div class="p-5">
+      <h3 class="text-center fw-bold fs-3">Reach Out Us</h3>
+    </div>
+    <div class="col-6 address fs-3 p-5">
+      <h4><i class="fa-solid fa-location-dot"></i> &nbsp; Our Location</h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">Hyderabad</li>
+        <li class="ms-5 fs-5">Telangana</li>
+      </ul>
+      <h4><i class="fa-solid fa-phone"></i> &nbsp; Call Us</h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">1234506789</li>
+      </ul>
+      <h4>
+        <i class="fa-solid fa-truck-medical"></i> &nbsp; 24*7 Emergency services
+      </h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">9876543211</li>
+      </ul>
+      <h4><i class="fa-solid fa-clock"></i> &nbsp; OPD Timings</h4>
+      <ul class="list-unstyled">
+        <li class="ms-5 fs-5">Monday - Saturday</li>
+        <li class="ms-5 fs-5">9:00 AM - 5:00 PM</li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <form action="" class="right_userinfo">
+        <div class="mt-4">
+          <input type="text" placeholder="Name" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="email" placeholder="email" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="tel" placeholder="Phone number" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="text" placeholder="" class="form-control" />
+        </div>
+        <div class="mt-4">
+          <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{%endblock%}

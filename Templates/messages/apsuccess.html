@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {%load static %} {%block styles%}
+<link rel="stylesheet" href="{% static 'css/messages/apsuccess.css' %}" />
+{%endblock%} {% block body%}
+<div class="apsuccess">
+  <div class="left">
+    <img src="{{doc_img.url}}" alt="doc_img" class="shadow rounded" />
+  </div>
+  <div class="right">
+    <div class="calender">
+      <img src="{% static 'images/booked.jpg' %}" alt="" />
+    </div>
+    <div class="details">
+      <h5>Doctor name is <strong>{{d_name}}</strong> </h5>
+      <h5>selected disease <strong>{{disease_type}}</strong></h5>
+      <h5> slot no is <strong>{{slot_no}} </strong></h5>
+      <h5>Your slot is booked on <strong>{{s_date}} </strong> slot time is  <strong>{{slot}} </strong></h5>
+      
+      <!-- <p>{{d_id}}</p> -->
+      <p><a href="http://127.0.0.1:8000">Back to Home</a></p>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

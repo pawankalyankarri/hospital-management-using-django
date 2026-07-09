@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block styles%}
+    <link rel="stylesheet" href="{% static 'css/home/appointments.css' %}">
+
+{%endblock%}
+{%block body%}
+
+<section class="docs-group mt-5" >
+    {%for doc in docs%}
+        <div class="card doc " >
+            {%if doc.doc_img%}
+                <img src="{{doc.doc_img.url}}" class="card-img-top rounded "  alt="">
+            {%elif doc.doc_gender == male%}
+                <img src="{%static 'images/docMale.avif'%}" class="card-img-top rounded "  alt="">
+            {%else%}
+                <img src="{%static 'images/docFemale.jpg'%}" class="card-img-top rounded "  alt="">
+            {%endif%}
+            <div class="card-body ">
+                <h4 class="text-capitalize text-center">Dr.{{doc.doc_name}}</h4>
+
+                <h6 class="text-capitalize text-center">{{doc.doc_spe}}</h6>
+                {%for disease,diseaseList in all_diseases.items%}
+                    
+                    {%if doc.doc_spe == disease%}
+                        <div class="">
+                            {%for dis in diseaseList%}
+                                    <a href="" class="btn btn-light text-primary m-1 text-capitalize">{{dis}}</a>
+                            {%endfor%}
+                       </div>
+                    {%endif%}
+                {%endfor%}
+                <div class="button-div">
+                    <a href="{%url 'doctorslotsurl' doc.doc_id %}" class="btn btn-outline-dark m-2   ">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+</section>
+{%endblock%}

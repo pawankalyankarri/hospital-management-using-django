@@ -1,0 +1,187 @@
+.head_ul,.nav_ul{
+    width: 100vw;
+}
+/* header .head_ul li{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+} */
+ .head_ul li img{
+    height: 100%;
+    width: 50%;
+ }
+.head_ul .nav-item{
+    height: 13vh;
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
+}
+.head_ul .icons i,.head_ul .icons svg{
+    font-size: x-large;
+    cursor: pointer;
+}
+.head_ul .icons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.head_ul .call{
+    border: 2px solid red;
+    border-radius: 7%;
+    text-align: center;
+}
+.head_ul li div a{
+    text-decoration: none;
+    font-size:medium;
+
+}
+
+
+.loginlinks{
+    background-color: aliceblue;
+    max-width: 100%;
+    position: sticky;
+    top:0;
+    z-index: 5;
+    
+
+}
+.nav_ul .nav-item{
+    height: 10vh;
+    width: 15vw;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+.nav_ul .nav-item a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+.have,.reviews{
+    width: 100vw;
+    background-color: blue;
+    color:whitesmoke;
+    font-size: larger;
+}
+.have .reviews li{
+    width: 20vw;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+
+}
+.have .reviews li div i{
+    width:100%;
+    height: 100%;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+/* provides */
+.spe_list .provides{
+    width: 100vw;
+}
+.spe_list h3{
+    text-align: center;
+    margin: 1%;
+    overflow: hidden;
+    font-weight: bold;
+}
+ /* Centers of Excellence */
+.spe_list .nav li{
+    /* width: 15vw;
+    max-height: 20vh; */
+    width: 17%;
+    height: 20%;
+    
+}
+.spe_list .nav li img{
+    /* width: 100%;
+    height:50%;
+    object-fit:cover; */
+    height: 70%;
+    
+}
+
+.doc_img_sec ul{
+    width: 100vw;
+}
+.doc_img_sec ul .li-item .card img{
+    width: 100%;
+    height:295px;
+    object-fit:cover;
+    object-position: top;
+}
+.doc_img_sec .nav li{
+    width: 30vw;
+    height: 50vh;
+}
+/* contact and address */
+/* .add_userinfo{
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+} */
+.address{
+    /* width: 40vw; */
+    color:black;
+    border: 2px solid black;
+    margin-bottom: 5%;
+   
+}
+.sidebar{
+    position: sticky;
+    right:0px;
+    top:50%;
+    z-index: 1;
+
+}
+.sidebar ul{
+    list-style-type: none;
+    position: absolute;
+    right:0px;
+    top:50%;
+    border-top-left-radius: 10%;
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; */
+    
+    background-color: black;
+    color: white;
+    padding:0.5%;
+    width: 8vw;
+    font-size:small;
+    font-weight:500;
+    text-align: center;
+}
+.sidebar ul li a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.sidebar ul li span{
+    display: block;
+    width: 100%;
+    padding:2%;
+    cursor: pointer;
+}
+.sidebar ul li span:hover{
+    background-color: white;
+    color:black;
+    border-radius: 10%;
+
+
+}
+
+
+.promotions{
+    margin-bottom: 5%;
+    width: 100vw;
+}
+
+/* .right_userinfo{
+    width: 40vw;
+} */
